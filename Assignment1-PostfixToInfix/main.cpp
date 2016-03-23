@@ -43,9 +43,11 @@ string postTOin(string s)
             first = (std::string) calcStack.top();
             calcStack.pop();
             calcStack.push("(" + first + buffer + second + ")");
+
         }
     }
     infix = (std::string)calcStack.top();
+    infix = infix.substr(1,(infix.length()-2));
     return infix;
 }
 
@@ -53,18 +55,12 @@ string postTOin(string s)
 int main()
 {
     string input ="";
-    while(1)
+    while(input != "end")
     {
 
-        cout << "Enter postfix to convert:" << endl;
+        cout << "Enter postfix to convert: (or end to close)" << endl;
         getline(cin,input);
-        if(input == "end")
-        {
-            break;
-        }
         cout << postTOin(input) << endl;
-        cout << "/n";
-        input = "";
 
      }
     return 0;
